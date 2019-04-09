@@ -1,0 +1,63 @@
+/*Unit 2, Assignment 1, Question 3
+*Zach Robinson
+*Date Started : 00/04/19
+*For: Ms. Harris and ICS4UI
+*Create a bucket list that can be edited, and can show the top 3 items.
+*/
+
+//Variables
+var bucketList : [String] = ["Go bungee jumping", "visit Germany", "Edge Walk at the CN tower"]
+var add = ""
+var remove : Int
+var input = ""
+var finished = "no"
+var x = 0
+
+print ("Welcome to Your Bucket List!\n")
+print ("What would you like to do? (\"add\" to it, \"remove\" something from it,\"top\" to show your top 3 items, or \"show\" your bucket list.)")
+input = readLine()!
+input = input.lowercased()
+
+
+while finished == "no" {
+  if x == 1 { //If the user wants to continue doing actions to the bucket list, they won't keep getting this message. they just have to refer to the first line
+    print ("\nWhat would you like to do?")
+    input = readLine()!
+    input = input.lowercased()
+  }
+//determining what to do
+  if input == "add" { //Adding a item to the bucket list
+    print ("\nwhat would you like to add?")
+    add = readLine()!
+    bucketList.append(add)
+    print ("\nYour new bucket list is now: \(bucketList)")
+    print ("\n\nAre you finished?")
+    finished = readLine()!
+    finished = finished.lowercased()
+
+  } else if input == "remove" { //Removing an item from the bucket list
+    print ("\n \(bucketList)\n What Item would you like to remove? (item number)")
+    remove = (Int(readLine()!)!)-1 //two "!" so that it can first make the string an int, and then so that int can be used. -1 to line up with what the user wants to remove
+    bucketList.remove(at: remove)
+    print ("\nYour new bucket list is now: \(bucketList)")
+    print ("\n\nAre you finished?")
+    finished = readLine()!
+    finished = finished.lowercased()
+
+  }else if input == "top" { //Showing the first 3 items in the list
+    print ("\n1. \(bucketList[0])\n 2. \(bucketList[1]) \n 3. \(bucketList[2])")
+    print ("\n\nAre you finished?")
+    finished = readLine()!
+    finished = finished.lowercased()
+
+  } else if input == "show" {//Showing the entire list
+    print ("\n \(bucketList)")
+    print ("\n\nAre you finished?")
+    finished = readLine()!
+    finished = finished.lowercased()
+
+  } else {
+    print ("\nThat is not a valid input")
+  }
+  x = 1
+}
